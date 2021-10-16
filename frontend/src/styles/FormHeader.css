@@ -1,0 +1,9 @@
+.formHeader {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.formHeader h2 {
+    margin-top: 0;
+    color: white;
+}
