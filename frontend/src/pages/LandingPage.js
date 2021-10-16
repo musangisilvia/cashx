@@ -2,12 +2,14 @@ import Header from "../components/Header";
 import Content from "../components/Content";
 import React from "react";
 
+import "../styles/LandingPage.css";
+
 const LandingPage = () => {
   return (
-    <React.Fragment>
+    <div className="common">
       <Header></Header>
       <Content></Content>
-    </React.Fragment>
+    </div>
   );
 };
 
