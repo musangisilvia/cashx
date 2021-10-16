@@ -1,9 +1,12 @@
 #root {
   margin: 0;
   padding: 0;
-  background-image:
-  linear-gradient(to bottom, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62)),
-  url('./pexels-steve-johnson-1006060.jpg');
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.62),
+      rgba(0, 0, 0, 0.62)
+    ),
+    url("../images/pexels-steve-johnson-1006060.jpg");
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,13 +19,14 @@ header {
   margin-bottom: 5%;
 }
 
-header h2, header button {
+header h2,
+header button {
   display: block;
 }
 
 header h2 {
   margin-left: 4%;
-  color: #66FCF1;
+  color: #66fcf1;
 }
 
 header button {
@@ -32,7 +36,7 @@ header button {
   width: 5.5%;
   padding: 3px;
   background: none;
-  border: 2px solid #66FCF1;
+  border: 2px solid #66fcf1;
   border-radius: 5px;
   color: white;
 }
@@ -46,15 +50,15 @@ header button {
 
 .content h1 {
   text-transform: uppercase;
-  color: #66FCF1;
-  font-family: 'Cinzel', serif;
+  color: #66fcf1;
+  font-family: "Cinzel", serif;
   font-size: 48px;
 }
 
 .content h2 {
   text-transform: uppercase;
-  color: #C5C6C7;
-  font-family: 'Cinzel', serif;
+  color: #c5c6c7;
+  font-family: "Cinzel", serif;
   margin-bottom: 5%;
 }
 
@@ -64,7 +68,7 @@ header button {
   width: 25%;
   padding: 3px;
   background: none;
-  border: 2px solid #66FCF1;
+  border: 2px solid #66fcf1;
   border-radius: 5px;
   color: white;
   margin-top: 10%;
