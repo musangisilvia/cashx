@@ -6,9 +6,9 @@ import FormFooter from "../components/FormFooter";
 const LoginPage = () => {
   return (
     <div className="common loginpage">
-      <FormHeader />
+      <FormHeader title="Sign In"/>
       <LoginForm />
-      <FormFooter />
+      <FormFooter acc="New to CashX?" link="/signup" linkmsg="Create an Account"/>
     </div>
   );
 };
