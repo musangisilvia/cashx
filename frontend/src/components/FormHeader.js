@@ -1,12 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../images/Logo.svg';
-import '../styles/FormHeader.css'
+import '../styles/FormHeader.css';
 
-function FormHeader() {
+function FormHeader(props) {
     return (
         <div className="formHeader">
-            <Logo />
-            <h2>Sign In</h2>
+            <Link to="/">
+                <Logo />
+            </Link>
+            <h2>{props.title}</h2>
         </div>
     )
 }
