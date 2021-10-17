@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../images/Logo.svg';
 import '../styles/FormHeader.css';
 
-function FormHeader(props) {
+function FormHeader({ title }) {
     return (
         <div className="formHeader">
             <Link to="/">
                 <Logo />
             </Link>
-            <h2>{props.title}</h2>
+            <h2>{title}</h2>
         </div>
     )
 }

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 import '../styles/FormFooter.css'
 
 
-function FormFooter(props) {
+function FormFooter({ acc, link, linkmsg }) {
     return (
         <div className="formfooter">
-            <h4>{props.acc} 
-            <span><Link to={props.link}>
-                         {props.linkmsg}
+            <h4>{acc} 
+            <span><Link to={link}>
+                         {linkmsg}
                     </Link>
             </span></h4>
         </div>
