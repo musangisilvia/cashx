@@ -1,6 +1,11 @@
+import { logout  } from '../helpers/auth';
+
 function Dashboard() {
   return (
-  "Hello world"
+    <>
+      <p>Hello world</p>
+      <button onClick={ () => logout() }>Logout</button>
+    </>
   )
 }
 
