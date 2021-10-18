@@ -1,10 +1,15 @@
-import { logout  } from '../helpers/auth';
+import DashboardHeader from "../components/DashboardHeader";
+import DashboardNav from "../components/DashboardNav";
+import DashboardStockCarousel from "../components/DashboardStockCarousel";
+import { logout } from "../helpers/auth";
 
 function Dashboard() {
   return (
     <>
-      <p>Hello world</p>
-      <button onClick={ () => logout() }>Logout</button>
+      <DashboardHeader />
+      <DashboardStockCarousel />
+      <DashboardNav />
+      <button onClick={ () => {logout()} }>Log Out </button>
     </>
   )
 }
