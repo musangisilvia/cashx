@@ -1,0 +1,50 @@
+.dashboard-nav{
+  overflow: hidden;
+  background-color: #1B2131;
+  position: absolute;
+  top: 130px;
+  bottom: 0;
+  padding-bottom: 40px;
+  transition: width .5s;
+}
+
+.nav-show{
+  width: 12vw;
+}
+
+.nav-hide {
+    width: 4vw;
+}
+
+
+
+.dashboard-nav ul{
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  padding-bottom: 40px;
+}
+
+.dashboard-nav li{
+  list-style: none;
+  color: #66fcf1;
+}
+
+.dashboard-nav li a {
+  text-decoration: none;
+  color: #66fcf1;
+  font-size: 1vw;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-nav li a i {
+  font-size: 1.5vw;
+  margin-right: 40px;
+}
+
+.dashboard-nav li a:hover {
+  color: white;
+}
