@@ -1,5 +1,4 @@
 .user-profile {
-  height: 50px;
 }
 
 .prof {
@@ -42,6 +41,7 @@
   width: 150px;
   border-radius: 10px;
   background-color: #e3e3e3;
+  z-index: 2;
 }
 .dd-menu p {
   margin: 0;

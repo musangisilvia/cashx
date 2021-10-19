@@ -16,7 +16,7 @@ function UserProfile() {
         setDdClass("dd-none");
       }
     };
-
+      // A window event Listener to hide the drop down menu
       if (ddClass === "dd-menu"){
         window.addEventListener('click', handleWindowClick);
       } else {
@@ -47,7 +47,7 @@ function UserProfile() {
       <div className={ddClass}>
         <p>Signed in as <br /> <strong> Tuva </strong> </p>
         <ul>
-          <Link to="/"><li>Your profile</li></Link>
+          <Link to="/settings#profile"><li>Your profile</li></Link>
           <Link to="/"><li>Settings</li></Link>
           <li onClick={() => logout() }>Log Out</li>
         </ul>
