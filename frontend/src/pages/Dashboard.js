@@ -1,6 +1,7 @@
 import DashboardHeader from "../components/DashboardHeader";
 import DashboardNav from "../components/DashboardNav";
 import DashboardStockCarousel from "../components/DashboardStockCarousel";
+import DashboardContent from "../components/DashboardContent";
 
 import "../styles/Dashboard.css";
 
@@ -10,6 +11,7 @@ function Dashboard() {
       <DashboardHeader />
       <DashboardStockCarousel />
       <DashboardNav />
+      <DashboardContent />
     </div>
   )
 }
