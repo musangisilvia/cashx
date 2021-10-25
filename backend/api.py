@@ -3,10 +3,22 @@ from flask import Flask, request
 import flask_sqlalchemy
 import flask_praetorian
 from flask_cors import CORS
+# Import finnhub
+import finnhub
+import json
+import requests
+
+#finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_SANDBOX_KEY'))
+finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_API_KEY'))
+
+# Set up IEX
+iex_sandbox_base = "https://sandbox.iexapis.com/stable"
 
 db = flask_sqlalchemy.SQLAlchemy()
 guard = flask_praetorian.Praetorian()
 cors = CORS()
+
+
 
 
 # A generic user model 
@@ -90,6 +102,23 @@ def refresh():
 @flask_praetorian.auth_required
 def protected():
     return {'message': f'protected endpoint allowd user - {flask_praetorian.current_user().username}'}
+
+@app.route('/api/news')
+def news():
+    data = finnhub_client.general_news('general', min_id=0)
+    data = data[:3]
+    data = json.dumps(data)
+
+    return data, 200
+
+@app.route('/api/carousel')
+def carousel():
+    url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={os.environ.get('IEX_SANDBOX_KEY')}"
+    
+    r = requests.get(url)
+    return json.dumps(r.json()), 200
+
+
 
 
 if __name__ == '__main__':
