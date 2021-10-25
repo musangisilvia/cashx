@@ -1,6 +1,38 @@
-.stock-carousel-item{
-  width: 120px;
+.stock-carousel-item {
+  width: 140px;
   height: 40px;
-  background-color: grey;
+  background-color: white;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.carousel-item-header {
+  display: flex;
+  margin-top: 3px;
+}
+
+.carousel-item-header p {
+  margin: 0 auto;
+}
+.carousel-item-header .cash {
+  font-weight: 600;
+}
+.carousel-item-trend{
+  text-align: center;
+  font-weight: bold;
+}
+
+.up-stock,
+.down-stock {
+  margin: 3px 0 0 0;
+}
+
+.down-stock {
+  color: red;
+}
+
+.up-stock {
+  color: green;
 }
