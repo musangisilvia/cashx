@@ -1,2 +1,4 @@
-.dashboard{
+.dashboard-headers{
+  position: sticky;
+  top: 0;
 }

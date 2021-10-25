@@ -7,9 +7,11 @@ import "../styles/Dashboard.css";
 
 function Dashboard() {
   return (
-    <div class="dashboard">
-      <DashboardHeader />
-      <DashboardStockCarousel />
+    <div className="dashboard">
+      <div className="dashboard-headers">
+        <DashboardHeader />
+        <DashboardStockCarousel />
+      </div>
       <DashboardNav />
       <DashboardContent />
     </div>
