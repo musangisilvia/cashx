@@ -8,8 +8,11 @@ import finnhub
 import json
 import requests
 
+FINNHUB_API_KEY = 'c5reog2ad3ifnpn51m20'
+
 #finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_SANDBOX_KEY'))
-finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_API_KEY'))
+# finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_API_KEY'))
+finnhub_client = finnhub.Client(api_key=FINNHUB_API_KEY)
 
 # Set up IEX
 iex_sandbox_base = "https://sandbox.iexapis.com/stable"
@@ -19,9 +22,7 @@ guard = flask_praetorian.Praetorian()
 cors = CORS()
 
 
-
-
-# A generic user model 
+# A generic user model
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.Text, unique=True)
@@ -76,6 +77,7 @@ with app.app_context():
             roles='admin'))
     db.session.commit()
 
+
 @app.route('/api/')
 def home():
     return {"Hello": "World"}, 200
@@ -90,6 +92,7 @@ def login():
     ret = {'access_token': guard.encode_jwt_token(user)}
     return ret, 200
 
+
 @app.route('/api/refresh', methods=['POST'])
 def refresh():
     print("refresh request")
@@ -98,10 +101,12 @@ def refresh():
     ret = {'access_token': new_token}
     return ret, 200
 
+
 @app.route('/api/protected')
 @flask_praetorian.auth_required
 def protected():
     return {'message': f'protected endpoint allowd user - {flask_praetorian.current_user().username}'}
+
 
 @app.route('/api/news')
 def news():
@@ -111,14 +116,14 @@ def news():
 
     return data, 200
 
+
 @app.route('/api/carousel')
 def carousel():
-    url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={os.environ.get('IEX_SANDBOX_KEY')}"
-    
+    IEX_SANDBOX_KEY = 'teaTSgcDfaMUGu6aieUpcQ_hkXcFcrpU'
+    url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
+
     r = requests.get(url)
     return json.dumps(r.json()), 200
-
-
 
 
 if __name__ == '__main__':
