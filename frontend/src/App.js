@@ -1,19 +1,18 @@
 import React from "react";
 import { useAuth } from "./helpers/auth";
 
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import PrivateRoute from "./helpers/PrivateRoute";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
-import Markets from "./pages/MarketsPage";
+import MarketsPage from "./pages/MarketsPage";
 import Analysis from "./pages/AnalysisPage";
 import History from "./pages/HistoryPage";
 import Research from "./pages/ResearchPage";
 import Wallet from "./pages/Wallet";
 import Settings from "./pages/Settings";
-import InternalServerError from "./pages/InternalServerError";
 
 
 import "./styles/App.css";
@@ -36,16 +35,13 @@ function App() {
           <SignupPage />
         </Route>
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PrivateRoute path="/markets" component={Markets} />
+        <PrivateRoute path="/markets" component={MarketsPage} />
         <PrivateRoute path="/analysis" component={Analysis} />
         <PrivateRoute path="/history" component={History} />
         <PrivateRoute path="/research" component={Research} />
         <PrivateRoute path="/wallet" component={Wallet} />
         <PrivateRoute path="/settings" component={Settings} />
 
-        <Route exact path="/500">
-          <InternalServerError />
-        </Route>
         <Route path="*" component={NotFoundPage} />
       </Switch>
     </div>
