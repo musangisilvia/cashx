@@ -7,7 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
-import Transact from "./pages/TransactPage";
+import Markets from "./pages/MarketsPage";
 import Analysis from "./pages/AnalysisPage";
 import History from "./pages/HistoryPage";
 import Research from "./pages/ResearchPage";
@@ -36,7 +36,7 @@ function App() {
           <SignupPage />
         </Route>
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PrivateRoute path="/transact" component={Transact} />
+        <PrivateRoute path="/markets" component={Markets} />
         <PrivateRoute path="/analysis" component={Analysis} />
         <PrivateRoute path="/history" component={History} />
         <PrivateRoute path="/research" component={Research} />

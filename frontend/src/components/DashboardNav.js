@@ -20,9 +20,9 @@ function DashboardNav() {
         </li>
         
        <li>
-         <Link to="/transact">
+         <Link to="/markets">
            <i class="uil uil-money-withdrawal"></i>
-           Transact
+           Markets
          </Link>
        </li>
 
