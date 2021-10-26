@@ -1,0 +1,14 @@
+import DashBoardNewsList from "./DashboardNewsList";
+import DashboardTable from "./DashboardTable";
+import "../styles/DashboardContent.css";
+
+function WalletContent() {
+  return (
+    <div className="dashboard-content">
+      <DashboardTable />
+      <DashBoardNewsList />
+    </div>
+  );
+}
+
+export default WalletContent;
