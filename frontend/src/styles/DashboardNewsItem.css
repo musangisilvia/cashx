@@ -1,0 +1,21 @@
+.dashboard-news-item {
+  background-color: white;
+  width: 14rem;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  border: 1px solid rgb(131, 123, 110);
+  border-radius: 10px;
+}
+
+.news-card-img-top {
+  width: 100%;
+  vertical-align: middle;
+  border-style: none;
+  border-radius: 10px 10px 0 0;
+}
+
+.news-card-body {
+  flex: 1 11 auto;
+  padding: 0.5rem 1rem;
+}

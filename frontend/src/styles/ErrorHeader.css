@@ -1,0 +1,8 @@
+.errorheader {
+  height: 70px;
+  background-color: #1b2131;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #80808052;
+}

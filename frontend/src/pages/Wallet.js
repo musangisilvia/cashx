@@ -1,11 +1,11 @@
 import DashboardHeader from "../components/DashboardHeader";
 import DashboardNav from "../components/DashboardNav";
 import DashboardStockCarousel from "../components/DashboardStockCarousel";
-import DashboardContent from "../components/DashboardContent";
+import WalletContent from "../components/WalletContent";
 
 import "../styles/Dashboard.css";
 
-function Dashboard() {
+function Wallet() {
   return (
     <div className="dashboard">
       <div className="dashboard-headers">
@@ -13,9 +13,9 @@ function Dashboard() {
         <DashboardStockCarousel />
       </div>
       <DashboardNav />
-      <DashboardContent />
+      <WalletContent />
     </div>
   )
 }
 
-export default Dashboard;
+export default Wallet;

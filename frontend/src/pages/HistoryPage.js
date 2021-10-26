@@ -1,11 +1,11 @@
 import DashboardHeader from "../components/DashboardHeader";
 import DashboardNav from "../components/DashboardNav";
 import DashboardStockCarousel from "../components/DashboardStockCarousel";
-import DashboardContent from "../components/DashboardContent";
+import HistoryContent from "../components/HistoryContent";
 
 import "../styles/Dashboard.css";
 
-function Dashboard() {
+function History() {
   return (
     <div className="dashboard">
       <div className="dashboard-headers">
@@ -13,9 +13,9 @@ function Dashboard() {
         <DashboardStockCarousel />
       </div>
       <DashboardNav />
-      <DashboardContent />
+      <HistoryContent />
     </div>
   )
 }
 
-export default Dashboard;
+export default History;

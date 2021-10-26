@@ -1,11 +1,11 @@
 import DashboardHeader from "../components/DashboardHeader";
 import DashboardNav from "../components/DashboardNav";
 import DashboardStockCarousel from "../components/DashboardStockCarousel";
-import DashboardContent from "../components/DashboardContent";
+import AnalysisContent from "../components/AnalysisContent";
 
 import "../styles/Dashboard.css";
 
-function Dashboard() {
+function Analysis() {
   return (
     <div className="dashboard">
       <div className="dashboard-headers">
@@ -13,9 +13,9 @@ function Dashboard() {
         <DashboardStockCarousel />
       </div>
       <DashboardNav />
-      <DashboardContent />
+      <AnalysisContent />
     </div>
   )
 }
 
-export default Dashboard;
+export default Analysis;
