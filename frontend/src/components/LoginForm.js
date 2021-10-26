@@ -9,6 +9,7 @@ function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorDiv, setErrorDiv] = useState('error-div-none');
+  const [isPending, setIsPending] = useState(false)
 
   const [logged] = useAuth();
   const history = useHistory();
@@ -28,6 +29,8 @@ function LoginForm() {
       'password': password
     };
 
+    setIsPending(true)
+
     {/* Make the post request for signing in */}
     fetch('http://localhost:5000/api/login', {
       method: 'post',
@@ -36,8 +39,8 @@ function LoginForm() {
       .then(token => {
         if (token.access_token){
           login(token);
-          history.push('/dashboard');
           setErrorDiv("error-div-none");
+          history.push('/dashboard');
         } else {
           setErrorDiv("error-div");
         }
@@ -77,9 +80,10 @@ function LoginForm() {
                   onChange={handlePasswordChange}
                 />
 
-                <button type="submit" onClick={handleSubmit}>
+                {!isPending && <button type="submit" onClick={handleSubmit}>
                   Sign In
-                </button>
+                </button>}
+                {isPending && <button>Logging in ...</button>}
             </form>
         </div>
     )
