@@ -1,39 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 
-.notfound {
+.internalerror {
   overflow: hidden;
 }
 
 .row {
   display: flex;
   justify-content: center;
+  margin: 0 20% 0;
 }
 
-.notfound img {
+.internalerror img {
   height: 400px;
+  width: 410px;
 }
 
-.notfound h1 {
+.internalerror h1 {
   font-size: 100px;
   text-align: center;
   font-family: "Bangers", cursive;
   margin-bottom: 10px;
 }
 
-.notfound h4 {
-  font-size: 30px;
+.internalerror h4 {
+  font-size: 24px;
   font-family: "Cinzel", sans-serif;
 }
 
-.notfound button {
+.internalerror button {
   background-color: #1b2131;
   text-transform: uppercase;
-  padding: 5px;
-  width: 100%;
+  margin: 0 25% 0;
+  padding: 7px;
+  width: 50%;
   border: none;
   border-radius: 5px;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
 }

@@ -1,20 +1,19 @@
-import '../styles/NotFound.css'
-import '../styles/App.css'
-import ErrorHeader from '../components/ErrorHeader'
-import NotFound from '../images/notfound-removebg-preview.png'
-
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ErrorHeader from '../components/ErrorHeader'
+import InternalError from '../images/internalerror.png'
 
-function NotFoundPage() {
+import '../styles/InternalError.css'
+
+function InternalServerError() {
         return (
-                <div className="notfound">
+                <div className="internalerror">
                         <ErrorHeader />
                         <div className="row">
-                                <img src={NotFound} alt="error:404"/>
+                                <img src={InternalError} alt='error:500'/>
                                 <div className="text">
-                                        <h1>404</h1>
-                                        <h4>Page not found</h4>
+                                        <h1>500</h1>
+                                        <h4>Sorry, our servers seem to be having an issue.</h4>
                                         <Link to="/">
                                                 <button>Go back Home</button>
                                         </Link>
@@ -24,4 +23,4 @@ function NotFoundPage() {
         )
 }
 
-export default NotFoundPage
+export default InternalServerError

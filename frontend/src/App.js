@@ -13,6 +13,7 @@ import History from "./pages/HistoryPage";
 import Research from "./pages/ResearchPage";
 import Wallet from "./pages/Wallet";
 import Settings from "./pages/Settings";
+import InternalServerError from "./pages/InternalServerError";
 
 
 import "./styles/App.css";
@@ -42,7 +43,10 @@ function App() {
         <PrivateRoute path="/wallet" component={Wallet} />
         <PrivateRoute path="/settings" component={Settings} />
 
-        <Route component={NotFoundPage} />
+        <Route exact path="/500">
+          <InternalServerError />
+        </Route>
+        <Route path="*" component={NotFoundPage} />
       </Switch>
     </div>
   );
