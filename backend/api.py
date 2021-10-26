@@ -74,11 +74,33 @@ with app.app_context():
             username="Tuva",
             password=guard.hash_password('strong'),
             roles='admin'))
+    if db.session.query(User).filter_by(username="Demo").count() < 1:
+        db.session.add(User(
+            username="Demo",
+            password=guard.hash_password('demo'),
+            roles='demo'
+        ))
     db.session.commit()
 
 @app.route('/api/')
 def home():
     return {"Hello": "World"}, 200
+
+@app.route('/api/signup', methods=['POST'])
+def signup():
+    req = request.get_json(force=True)
+    username = req.get('username', None)
+    password = req.get('password', None)
+    if not User.lookup(username):
+        password = guard.hash_password('strong')
+        user = User(username=username, password=password, roles='user')
+        db.session.add(user)
+        db.session.commit()
+        ret = {'access_token': guard.encode_jwt_token(user)}
+        return ret, 200
+    else:
+        return {"status": "not okay"}
+
 
 
 @app.route('/api/login', methods=['POST'])
