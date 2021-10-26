@@ -4,21 +4,32 @@ import '../styles/SignupForm.css'
 function SignupForm() {
 
     const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
+    // const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const user = {username, email, password};
+        let user = {
+            'username': username,
+            'password':  password
+        };
 
-        fetch('http://localhost:3000/signup', {
+        fetch('http://localhost:5000/api/signup', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
-        }).then(() => {
-            console.log({user})
-        })
+        }).then(r => r.json())
+        .then(token => {
+            console.log(token)
+            // if (token.access_token){
+            //   login(token);
+            //   history.push('/dashboard');
+            //   setErrorDiv("error-div-none");
+            // } else {
+            //   setErrorDiv("error-div");
+            // }
+          })
 
     }
 
@@ -42,8 +53,8 @@ function SignupForm() {
                         type="email" 
                         name="email"
                         required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        //value={email}
+                        //onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
 
