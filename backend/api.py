@@ -28,6 +28,7 @@ class User(db.Model):
     password = db.Column(db.Text)
     roles = db.Column(db.Text)
     is_active = db.Column(db.Boolean, default=True, server_default='true')
+    balance = db.Column(db.Float, default=10000.0)
 
     @property
     def rolenames(self):
