@@ -16,6 +16,7 @@ import Settings from "./pages/Settings";
 
 
 import "./styles/App.css";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const [logged] = useAuth();
@@ -40,6 +41,8 @@ function App() {
         <PrivateRoute path="/research" component={Research} />
         <PrivateRoute path="/wallet" component={Wallet} />
         <PrivateRoute path="/settings" component={Settings} />
+
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
