@@ -5,8 +5,7 @@ import "../styles/DashboardContent.css";
 function AnalysisContent() {
   return (
     <div className="dashboard-content">
-      <DashboardTable />
-      <DashBoardNewsList />
+      Hello Portfolio content
     </div>
   );
 }

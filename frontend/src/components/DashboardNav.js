@@ -27,9 +27,9 @@ function DashboardNav() {
        </li>
 
        <li>
-         <Link to="/analysis">
-           <i class="uil uil-chart-line"></i>
-           Analysis
+         <Link to="/portfolio">
+           <i class="uil uil-money-stack"></i>
+           Portfolio
          </Link>
        </li>
 
