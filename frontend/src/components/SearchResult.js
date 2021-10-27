@@ -21,7 +21,7 @@ export default SearchResult;
 
 const SearchResultItem = ({result}) => {
 
-  const stock_url = result ? "/stock/"+result.symbol : "/#"; 
+  const stock_url = result ? "/stocks/"+result.symbol : "/#"; 
 
   return (
     <>
