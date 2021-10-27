@@ -34,8 +34,10 @@ function SignupForm() {
                     console.log(token)
                     login(token);
                     setErrorDiv("error-div-none");
+                    setIsPending(false)
                     history.push('/dashboard');
                 } else {
+                    setIsPending(false)
                     setErrorDiv("error-div");
                 }
             })

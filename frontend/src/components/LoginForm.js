@@ -40,8 +40,10 @@ function LoginForm() {
         if (token.access_token){
           login(token);
           setErrorDiv("error-div-none");
+          setIsPending(false)
           history.push('/dashboard');
         } else {
+          setIsPending(false)
           setErrorDiv("error-div");
         }
       })
@@ -83,7 +85,7 @@ function LoginForm() {
                 {!isPending && <button type="submit" onClick={handleSubmit}>
                   Sign In
                 </button>}
-                {isPending && <button>Logging in ...</button>}
+                {isPending && <button>Signing in ...</button>}
             </form>
         </div>
     )
