@@ -13,6 +13,7 @@ finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_API_KEY'))
 
 # Set up IEX
 iex_sandbox_base = "https://sandbox.iexapis.com/stable"
+iex_live_base = "https://cloud.iexapis.com/stable"
 
 db = flask_sqlalchemy.SQLAlchemy()
 guard = flask_praetorian.Praetorian()
@@ -49,6 +50,15 @@ class User(db.Model):
 
     def is_valid(self):
         return self.is_active
+
+class UserShares(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    symbol = db.Column(db.String(10), unique=True, nullable=False)
+    shares = db.Column(db.Integer, nullable= False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', backref=db.backref('shares', lazy=True))
+
+
 
 
 # Initialize flask app for the example
@@ -140,10 +150,15 @@ def news():
 @app.route('/api/carousel', methods=["GET"])
 def carousel():
     IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
+    IEX_API_KEY = os.environ.get("IEX_API_KEY")
     url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
+#    url = f"{iex_live_base}/stock/market/list/mostactive?token={IEX_API_KEY}"
 
     r = requests.get(url)
-    return json.dumps(r.json()), 200
+    data = r.json()
+    if not data:
+        data = None
+    return json.dumps(data), 200
 
 @app.route('/api/stocks', methods=["GET"])
 def stocks():
@@ -164,6 +179,36 @@ def stocks():
 def search(stock_name):
     results = finnhub_client.symbol_lookup(stock_name).get('result')[0]
     return json.dumps(results), 200
+
+@app.route('/api/stocks/<stock_name>', methods=["GET"])
+@flask_praetorian.auth_required
+def stock(stock_name):
+    
+    stock_name = stock_name.upper()
+
+    stock_quotes = finnhub_client.quote(stock_name)
+
+    api_key = os.environ.get("POLYGON_API_KEY")
+    url = f"https://api.polygon.io/v1/meta/symbols/{stock_name}/company?apiKey={api_key}"
+
+    r = requests.get(url)
+
+    data = {}
+    user_data = {}
+
+    user = flask_praetorian.current_user()
+    user_data["balance"] = user.balance
+    user_data["shares_owned"] = 12341
+
+
+
+    stock = r.json()
+
+    data["stock"] = stock
+    data["user_data"] = user_data
+    data["quotes"] = stock_quotes
+
+    return json.dumps(data), 200
 
 
 
