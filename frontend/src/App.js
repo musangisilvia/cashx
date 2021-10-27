@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage";
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
 import MarketsPage from "./pages/MarketsPage";
+import StockPage from "./pages/StockPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import History from "./pages/HistoryPage";
 import Research from "./pages/ResearchPage";
@@ -34,13 +35,14 @@ function App() {
         <Route exact path="/signup">
           <SignupPage />
         </Route>
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PrivateRoute path="/markets" component={MarketsPage} />
-        <PrivateRoute path="/portfolio" component={PortfolioPage} />
-        <PrivateRoute path="/history" component={History} />
-        <PrivateRoute path="/research" component={Research} />
-        <PrivateRoute path="/wallet" component={Wallet} />
-        <PrivateRoute path="/settings" component={Settings} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/markets" component={MarketsPage} />
+        <PrivateRoute exact path="/stocks/:symbol" component={StockPage} />
+        <PrivateRoute exact path="/portfolio" component={PortfolioPage} />
+        <PrivateRoute exact path="/history" component={History} />
+        <PrivateRoute exact path="/research" component={Research} />
+        <PrivateRoute exact path="/wallet" component={Wallet} />
+        <PrivateRoute exact path="/settings" component={Settings} />
 
         <Route path="*" component={NotFoundPage} />
       </Switch>
