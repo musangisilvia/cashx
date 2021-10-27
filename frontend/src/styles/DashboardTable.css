@@ -34,6 +34,7 @@ h2 small {
   justify-content: space-between;
   margin-bottom: 25px;
 }
+.responsive-table .markets-table-header,
 .responsive-table .table-header {
   background-color: #1b2131;
   font-size: 14px;
@@ -41,6 +42,7 @@ h2 small {
   letter-spacing: 0.03em;
   color: #66fcf1;
 }
+.responsive-table .markets-table-row,
 .responsive-table .table-row {
   background-color: #ffffff;
   box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
@@ -61,32 +63,25 @@ h2 small {
   flex-basis: 25%;
 }
 
+.markets-table-header .col-3,
+.markets-table-header .col-4,
+.markets-table-header .col-5,
+.markets-table-row .col-3,
+.markets-table-row .col-4,
+.markets-table-row .col-5{
+  text-align: right;
+}
 
 
 
+.row-down{
+  color: red;
+}
 
+.row-up{
+  color: green;
+}
 
-
-
-@media all and (max-width: 767px) {
-  .responsive-table .table-header {
-    display: none;
-  }
-  .responsive-table li {
-    display: block;
-  }
-  .responsive-table .col {
-    flex-basis: 100%;
-  }
-  .responsive-table .col {
-    display: flex;
-    padding: 10px 0;
-  }
-  .responsive-table .col:before {
-    color: #6C7A89;
-    padding-right: 10px;
-    content: attr(data-label);
-    flex-basis: 50%;
-    text-align: right;
-  }
+.col i {
+  font-size: 16px;
 }

@@ -1,11 +1,11 @@
 import DashboardHeader from "../components/DashboardHeader";
 import DashboardNav from "../components/DashboardNav";
 import DashboardStockCarousel from "../components/DashboardStockCarousel";
-import TransactContent from "../components/TransactContent";
+import MarketsContent from "../components/MarketsContent";
 
 import "../styles/Dashboard.css";
 
-function Transact() {
+function MarketsPage() {
   return (
     <div className="dashboard">
       <div className="dashboard-headers">
@@ -13,9 +13,9 @@ function Transact() {
         <DashboardStockCarousel />
       </div>
       <DashboardNav />
-      <TransactContent />
+      <MarketsContent />
     </div>
   )
 }
 
-export default Transact;
+export default MarketsPage;
