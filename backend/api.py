@@ -137,13 +137,35 @@ def news():
     return data, 200
 
 
-@app.route('/api/carousel')
+@app.route('/api/carousel', methods=["GET"])
 def carousel():
     IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
     url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
 
     r = requests.get(url)
     return json.dumps(r.json()), 200
+
+@app.route('/api/stocks', methods=["GET"])
+def stocks():
+    IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
+    active_url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
+    gainers_url = f"{iex_sandbox_base}/stock/market/list/gainers?token={IEX_SANDBOX_KEY}"
+    losers_url = f"{iex_sandbox_base}/stock/market/list/losers?token={IEX_SANDBOX_KEY}"
+    
+    r_active = requests.get(active_url)
+    r_gainers = requests.get(gainers_url)
+    r_losers = requests.get(losers_url)
+
+    data = {"active":r_active.json(), "gainers": r_gainers.json(), "losers": r_losers.json()}
+
+    return json.dumps(data), 200
+    
+@app.route('/api/search_stock/<stock_name>', methods=["GET"])
+def search(stock_name):
+    results = finnhub_client.symbol_lookup(stock_name).get('result')[0]
+    return json.dumps(results), 200
+
+
 
 
 if __name__ == '__main__':
