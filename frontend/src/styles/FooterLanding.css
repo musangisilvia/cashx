@@ -1,0 +1,20 @@
+footer {
+  background-color: #1f2131;
+  padding: 30px;
+  color: white;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: center;
+}
+
+footer a {
+  font-family: "Cinzel", sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 10px;
+}
+
+footer p {
+  font-size: x-small;
+  color: #c4c4c4;
+}
