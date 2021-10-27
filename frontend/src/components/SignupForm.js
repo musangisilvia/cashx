@@ -35,7 +35,7 @@ function SignupForm() {
                     login(token);
                     setErrorDiv("error-div-none");
                     setIsPending(false)
-                    history.push('/dashboard');
+                    history.push('/dashboard', {params: user.username});
                 } else {
                     setIsPending(false)
                     setErrorDiv("error-div");
