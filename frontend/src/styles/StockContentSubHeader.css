@@ -1,0 +1,51 @@
+.stock-content-subheader {
+  display: flex;
+}
+
+
+.stock-content-subheader .company-brief{
+  flex: 2;
+  font-size: 17px;
+  margin: 5px;
+}
+
+.stock-content-subheader .stock-content-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+}
+
+.sell {
+  background-color: red;
+}
+
+.buy {
+  background-color: green;
+}
+
+.sell:hover, 
+.buy:hover {
+  opacity: .6;
+}
+
+
+.stock-content-subheader div .sell,
+.stock-content-subheader div .buy{
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+  transition: all .2s linear;
+}
+
+.sell p,
+.buy p {
+  text-align: center;
+  margin: 0;
+}

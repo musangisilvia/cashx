@@ -1,0 +1,106 @@
+.stock-content-info{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.stock-graph {
+  height: 300px;
+  width: 500px;
+  background-color: grey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stock-info {
+  width: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.stock-info .title{
+  background-color: #1b2131;
+  color: white;
+  padding: 10px;
+  margin:0;
+  font-weight: bold;
+}
+
+.info-container {
+  display: flex;
+}
+
+.info-side {
+  flex: 1;
+  margin: 20px;
+}
+
+.info-side p{
+  margin: 0;
+  padding: 5px 10px; 
+  font-weight: bold;
+}
+
+.info-trend {
+  display: flex;
+  align-items: center;
+}
+.info-trend-nums p{
+  padding: 0;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.trend-up {
+  color: green;
+}
+
+.trend-down {
+  color: red;
+}
+
+.info-trend-arrow {
+  padding: 20px;
+  font-size: 30px;
+}
+
+.owned {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #66fcf1;
+  border-radius: 5px;
+}
+
+.owned p {
+  text-align: center;
+}
+
+.owned p:last-child{
+  font-size: 20px;
+}
+
+
+
+.info-main {
+  flex: 2;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.info-row p {
+  font-weight: bold;
+  margin: 0;
+  padding: 10px;
+}
+
+.info-row:nth-child(odd) {
+  background-color: #66fcf1;
+}
