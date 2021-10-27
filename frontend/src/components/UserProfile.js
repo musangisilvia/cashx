@@ -1,15 +1,13 @@
 import "../styles/UserProfile.css";
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logout } from '../helpers/auth'
 
 
-function UserProfile() {
+function UserProfile({ location }) {
 
   const [ddClass, setDdClass] = useState("dd-none");
-  
-  const location = useLocation();
-  const username = location.state.params;
+
 
   useEffect(() => {
     const handleWindowClick = () => {
@@ -48,7 +46,7 @@ function UserProfile() {
         </div>
       </div>
       <div className={ddClass}>
-        <p>Signed in as <br /> <strong>{username}</strong> </p>
+        <p>Signed in as <br /> <strong> Tuva </strong> </p>
         <ul>
           <Link to="/settings#profile"><li>Your profile</li></Link>
           <Link to="/"><li>Settings</li></Link>
