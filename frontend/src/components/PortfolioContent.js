@@ -2,13 +2,12 @@ import DashBoardNewsList from "./DashboardNewsList";
 import DashboardTable from "./DashboardTable";
 import "../styles/DashboardContent.css";
 
-function TransactContent() {
+function AnalysisContent() {
   return (
     <div className="dashboard-content">
-      <DashboardTable />
-      <DashBoardNewsList />
+      Hello Portfolio content
     </div>
   );
 }
 
-export default TransactContent;
+export default AnalysisContent;
