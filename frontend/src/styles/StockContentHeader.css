@@ -1,0 +1,22 @@
+.stock-content-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stock-content-header p{
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.stock-content-header div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stock-content-header div img{
+  height: 80px;
+  margin-right: 30px;
+}

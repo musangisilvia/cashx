@@ -10,6 +10,7 @@ function DashboardStockCarousel() {
 
   const {data: stocks, isPending, error} = useFetch('http://localhost:5000/api/carousel')
 
+
   return (
     <div className="dashboard-stock-carousel">
       {/* Conditional Rendering */}
