@@ -14,7 +14,7 @@ function DashboardNav() {
       <ul>
         <li>
           <Link to="/dashboard">
-            <i class="uil uil-create-dashboard"></i>
+            <i className="uil uil-create-dashboard"></i>
             Home
           </Link>
         </li>

@@ -92,7 +92,7 @@ def signup():
     username = req.get('username', None)
     password = req.get('password', None)
     if not User.lookup(username):
-        password = guard.hash_password('strong')
+        password = guard.hash_password(password)
         user = User(username=username, password=password, roles='user')
         db.session.add(user)
         db.session.commit()

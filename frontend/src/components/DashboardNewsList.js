@@ -16,7 +16,7 @@ const DashBoardNewsList = () => {
       {isPending && <div>Loading...</div>}
       {
         blogs && 
-          blogs.map((blog) => (<DashboardNewsItem blog={ blog }/>))
+          blogs.map((blog) => (<DashboardNewsItem key={blog.id} blog={ blog }/>))
       }
         
     </div>
