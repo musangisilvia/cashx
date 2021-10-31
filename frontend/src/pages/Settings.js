@@ -1,13 +1,12 @@
-import SettingsContent from "../components/SettingsContent";
+import StockContent from "../components/StockContent";
 
-import "../styles/Dashboard.css";
+const StockPage = () => {
 
-function Settings() {
   return (
     <div>
-      <SettingsContent />
+    <StockContent />
     </div>
-  )
-}
+  );
+};
 
-export default Settings;
+export default StockPage;
