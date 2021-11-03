@@ -5,16 +5,25 @@ footer {
   font-family: inherit;
   font-size: inherit;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer a {
   font-family: "Cinzel", sans-serif;
   text-decoration: none;
   color: white;
-  font-size: 10px;
+  font-size: 16px;
+  margin-left: 30px ;
 }
 
 footer p {
   font-size: x-small;
   color: #c4c4c4;
+  margin: auto;
+}
+
+footer a:hover {
+  color: #66fcf1;
 }
