@@ -1,10 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory  } from "react-router-dom";
+import { useAuth, login } from '../helpers/auth';
+
 
 import "../styles/Content.css";
 
+
+
 // Landing page content
 function Content() {
+
+  const history = useHistory();
+  
+  const [isPending, setIsPending] = useState(false)
+
+  const handleDemoLogin = () => {
+
+  const credentials = {
+      'username': 'demo',
+      'password': 'demo-password'
+    };
+
+  console.log(credentials);
+
+  setIsPending(true)
+
+    {/* Make the post request for signing in */}
+    fetch('http://localhost:5000/api/login', {
+      method: 'post',
+      body: JSON.stringify(credentials)
+    }).then(r => r.json())
+      .then(token => {
+        if (token.access_token){
+          login(token);
+          // setErrorDiv("error-div-none");
+          setIsPending(false)
+          history.push('/dashboard');
+        } else {
+          setIsPending(false)
+          // setErrorDiv("error-div");
+        }
+      })
+
+
+
+};
+
   return (
     <div className="content">
       <h1>Learn how to trade risk free</h1>
@@ -12,7 +53,7 @@ function Content() {
       <Link className="signup-btn" to="/signup">
         Get started for free
       </Link>
-      <Link className="demo-btn" to="#">
+      <Link className="demo-btn" to="#" onClick={handleDemoLogin}>
         Quick Demo
       </Link>
     </div>
