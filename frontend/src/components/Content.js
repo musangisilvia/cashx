@@ -26,7 +26,7 @@ function Content() {
   setIsPending(true)
 
     {/* Make the post request for signing in */}
-    fetch('http://localhost:5000/api/login', {
+    fetch('/api/login', {
       method: 'post',
       body: JSON.stringify(credentials)
     }).then(r => r.json())
