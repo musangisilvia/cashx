@@ -8,8 +8,8 @@ import finnhub
 import requests
 
 
-finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_SANDBOX_KEY'))
-# finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_API_KEY'))
+#finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_SANDBOX_KEY'))
+finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_API_KEY'))
 
 # Set up IEX
 iex_sandbox_base = "https://sandbox.iexapis.com/stable"
@@ -31,8 +31,8 @@ def news():
 def carousel():
     IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
     IEX_API_KEY = os.environ.get("IEX_API_KEY")
-    url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
-    # url = f"{iex_live_base}/stock/market/list/mostactive?token={IEX_API_KEY}"
+    #url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
+    url = f"{iex_live_base}/stock/market/list/mostactive?token={IEX_API_KEY}"
     print(url)
     r = requests.get(url)
     data = r.json()

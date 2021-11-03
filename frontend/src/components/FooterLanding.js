@@ -8,10 +8,11 @@ function FooterLanding() {
                 <>
                 <footer>
                         <img src={Logo} alt="CASHX" /> <br/>
+                        <p>&copy; 2021 CashX Inc.</p>
+
                         <Link to="/signup">Sign up</Link> <br/>
                         <Link to="/login">Sign in</Link> <br/>
                         <Link to="/demo">Quick Demo</Link> <br/>
-                        <p>&copy; 2021</p>
                 </footer> 
                 </>
         )

@@ -11,6 +11,9 @@
   background-size: cover;
   background-repeat: no-repeat;
 } */
+html {
+  scroll-behavior: smooth;
+}
 .common {
   height: 100vh;
   background-image: linear-gradient(
