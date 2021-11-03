@@ -17,7 +17,8 @@
   color: #c5c6c7;
   font-family: "Cinzel", serif;
   font-size: 2vw;
-  margin-bottom: 60px;
+  text-align: left;
+  /*margin-bottom: 60px;*/
 }
 .demo-btn,
 .signup-btn {
@@ -29,12 +30,37 @@
   border: 2px solid #66fcf1;
   border-radius: 5px;
   color: white;
-  margin-top: 10%;
-  margin-bottom: 11%;
+  /*margin-top: 10%;*/
+  /*margin-bottom: 11%;*/
   font-size: medium;
   text-decoration: none;
+  text-align: center;
 }
 
 .demo-btn {
   margin-left: 30px;
 }
+
+.scroll-down{
+  font-size: 2vw;
+  color: #66fcf1;
+  /*text-align: right;*/
+  margin-left: auto;
+  animation-name: change-colors;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes change-colors {
+  from {color:  #66fcf1}
+  to {color:  #ffffff}
+}
+
+
+.landing-links{
+  display: flex;
+  align-items: center;
+
+}
+

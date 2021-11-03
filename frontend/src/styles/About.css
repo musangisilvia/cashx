@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 
+
+.cont {
+  width: 80%;
+  margin: auto;
+}
+
 .about {
-  margin: 2% 25% 0;
+  /*margin: 2% 25% 0;*/
+  margin-top: 50px;
 }
 
 .about h1 {
@@ -27,16 +34,27 @@
   font-size: 7px;
 }
 
-.features {
-  box-shadow: 3px 3px 3px 3px #c4c4c4;
-  padding: 30px;
-  margin-bottom: 5%;
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-bottom: 30px;
 }
 
-.features:hover {
-  box-shadow: 7px 7px 7px 7px #c4c4c4;
+.about-section:nth-child(2){
+  flex-direction: row-reverse;
 }
 
-.features .money {
-  font-weight: bolder;
+
+.about-section img{
+  max-width: 50%;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.about-info {
+  text-align: center;
+  max-width: 50%;
+
 }

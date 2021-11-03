@@ -50,12 +50,17 @@ function Content() {
     <div className="content">
       <h1>Learn how to trade risk free</h1>
       <h2>Worry less about money and get to learn</h2>
-      <Link className="signup-btn" to="/signup">
-        Get started for free
-      </Link>
-      <Link className="demo-btn" to="#" onClick={handleDemoLogin}>
-        Quick Demo
-      </Link>
+      <div className='landing-links'>
+        <Link className="signup-btn" to="/signup">
+          Get started for free
+        </Link>
+        <Link className="demo-btn" to="#" onClick={handleDemoLogin}>
+          Quick Demo
+        </Link>
+        <a class="scroll-down" href="#about">
+          <i class="uil uil-arrow-from-top"></i>
+        </a>
+      </div>
     </div>
   );
 }
