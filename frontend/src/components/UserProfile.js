@@ -45,7 +45,7 @@ function UserProfile({ location }) {
         </div>
       </div>
       <div className={ddClass}>
-        <p>Signed in as <br /> <strong>{username}</strong> </p>
+        <p>Signed in as <br /> <strong>username</strong> </p>
         <ul>
           <Link to="/settings#profile"><li>Your profile</li></Link>
           <Link to="/"><li>Settings</li></Link>
