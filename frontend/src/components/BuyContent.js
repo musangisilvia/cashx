@@ -1,7 +1,7 @@
 import {useParams} from "react-router";
 import "../styles/StockContent.css"
 import StockContentHeader from "./StockContentHeader";
-import BuyContentInfo from "./StockContentInfo";
+import BuyContentInfo from "./BuyContentInfo";
 
 import useAuthFetch from "../helpers/useAuthFetch";
 
