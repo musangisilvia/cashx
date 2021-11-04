@@ -6,6 +6,9 @@ import os
 import json
 import finnhub
 import requests
+from flask import request
+from app.models import User, Shares, Transaction
+from datetime import datetime
 
 
 #finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_SANDBOX_KEY'))
@@ -91,3 +94,67 @@ def stock(stock_name):
     data["quotes"] = stock_quotes
 
     return json.dumps(data), 200
+
+
+@bp.route('/stocks/<symbol>/buy', methods=["POST"])
+@auth_required
+def buy_stock(symbol):
+    '''
+    Buys stock for a certain company
+    '''
+    symbol = symbol.upper()
+
+    # Get the data from the json payload
+    req = request.get_json(force=True)
+    stock_price = float(req.get('current_price', None))
+    shares_to_buy = float(req.get('shares_to_buy', None))
+    stock_name = req.get('company_name', None)
+
+
+    # Calculate total amount to be spent
+    total_amount = shares_to_buy * stock_price
+
+    # Check if user can afford to buy
+    user = current_user()
+    if total_amount > user.balance:
+        # Return appropriate error message
+        return {"error": "not enough balance"}, 400
+
+    # If there is enough money in the account
+    # First get the new balance
+    new_balance = user.balance - total_amount
+    user.balance = new_balance
+    db.session.add(user)
+
+    # Add the shares to the database
+    # Check if they already own those shares
+    shares = Shares.lookup(symbol, user.id)
+    if not shares:
+        # If no shares are owned create new instance
+        shares = Shares(symbol=symbol,
+                        name=stock_name,
+                        shares=shares_to_buy,
+                        buying_value=total_amount,
+                        user_id=user.id)
+    else:
+        # If shares are already ownded just update
+        shares.shares = shares.shares + shares_to_buy
+        shares.buying_value=shares.buying_value + total_amount
+
+    db.session.add(shares)
+
+    # Add the transaction to the db
+    trans = Transaction(symbol=symbol,
+                        name=stock_name,
+                        amount=total_amount,
+                        date=datetime.now(),
+                        type="buy",
+                        user_id=user.id)
+
+    db.session.add(trans)
+
+    db.session.commit()
+
+
+    return {"status": "ok"}, 201
+
