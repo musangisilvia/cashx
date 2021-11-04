@@ -8,7 +8,7 @@ import useFetch from "../helpers/useFetch";
 
 function DashboardStockCarousel() {
 
-  const {data: stocks, isPending, error} = useFetch('http://localhost:5000/api/carousel')
+  const {data: stocks, isPending, error} = useFetch('/api/carousel')
 
 
   return (

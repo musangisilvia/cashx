@@ -6,7 +6,7 @@ import DashboardNewsItem from "./DashboardNewsItem";
 
 const DashBoardNewsList = () => {
 
-  const {data: blogs, isPending, error} = useFetch('http://localhost:5000/api/news')
+  const {data: blogs, isPending, error} = useFetch('/api/news')
 
   return (
     <div className="dashboard-news-list">

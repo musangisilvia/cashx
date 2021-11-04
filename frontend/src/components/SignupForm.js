@@ -24,7 +24,7 @@ function SignupForm() {
         };
         setIsPending(true)
         setTimeout(() => {
-            fetch('http://localhost:5000/api/signup', {
+            fetch('/api/signup', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
