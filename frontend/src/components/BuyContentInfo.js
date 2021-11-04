@@ -8,7 +8,7 @@ const BuyContentInfo = ({ data }) => {
   return (
     <div className="stock-content-info">
         
-        <Buy />
+        <Buy data={data}/>
 
         <div className="stock-info">
           <p className="title">Stock Information</p>

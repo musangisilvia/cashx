@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { authFetch } from "../helpers/auth"
+
 
 import "../styles/Buy.css";
 
-const Buy = () => {
+const Buy = ({ data }) => {
 
   let [sharesToBuy, setSharesToBuy] = useState(0);
 
@@ -11,7 +13,30 @@ const Buy = () => {
   }
 
   const handleBuy = () => {
-    console.log(sharesToBuy);
+
+    const payload = {
+      'current_price': data.quotes.c,
+      'shares_to_buy': sharesToBuy,
+      'company_name': data.stock.name
+    }
+
+    const symbol = data.stock.symbol 
+
+    authFetch('http://localhost:5000/api/stocks/' + symbol + '/buy', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }
 
   const handleIncrement = () => {

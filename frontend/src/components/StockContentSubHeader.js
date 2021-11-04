@@ -5,8 +5,8 @@ const StockContentSubHeader = ({ data }) => {
 
   const history = useHistory();
 
-  const buy_url = "/stock/" + data.stock.symbol + "/buy"
-  const sell_url = "/stock/" + data.stock.symbol + "/sell"
+  const buy_url = "/stocks/" + data.stock.symbol + "/buy"
+  const sell_url = "/stocks/" + data.stock.symbol + "/sell"
 
   return (
      <div className="stock-content-subheader">
