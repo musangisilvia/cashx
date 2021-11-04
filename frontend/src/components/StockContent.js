@@ -9,7 +9,7 @@ import useAuthFetch from "../helpers/useAuthFetch";
 const StockContent = () => {
   
   const { symbol } = useParams();
-  const {data , isPending, error} = useAuthFetch("/api/stocks/"+symbol)
+  const {data , isPending, error} = useAuthFetch("https://cashx.tech/api/stocks/"+symbol)
   console.log(data);
 
   return (
