@@ -1,14 +1,14 @@
 import "../styles/StockContentInfo.css";
-import Buy from "./components/Buy";
+import Buy from "./Buy";
 
 
-const StockContentInfo = ({ data }) => {
+const BuyContentInfo = ({ data }) => {
   
 
   return (
     <div className="stock-content-info">
+        
         <Buy />
-
 
         <div className="stock-info">
           <p className="title">Stock Information</p>
@@ -67,7 +67,7 @@ const StockContentInfo = ({ data }) => {
               </div>
               <div className="info-row">
                 <p>% Change</p>
-                <p>{data.quotes.dp}</p>
+                <p>{data.quotes.dp}</p> 
               </div>
          
             </div>
@@ -77,4 +77,4 @@ const StockContentInfo = ({ data }) => {
   );
 }
 
-export default StockContentInfo;
+export default BuyContentInfo;
