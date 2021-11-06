@@ -85,7 +85,15 @@ def stock(stock_name):
 
     user = current_user()
     user_data["balance"] = user.balance
-    user_data["shares_owned"] = 12341
+
+    shares = Shares.lookup(stock_name, user.id)
+    if shares:
+        user_data["shares_owned"] = shares.shares
+        user_data["total_invested"] = shares.buying_value
+    else:
+        user_data["shares_owned"] = 0
+        user_data["total_invested"] = 0
+
 
     stock = r.json()
 
@@ -118,7 +126,7 @@ def buy_stock(symbol):
     user = current_user()
     if total_amount > user.balance:
         # Return appropriate error message
-        return {"error": "not enough balance"}, 400
+        return {"error": "Not Enough Balance in account"}, 400
 
     # If there is enough money in the account
     # First get the new balance
