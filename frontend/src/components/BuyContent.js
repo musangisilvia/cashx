@@ -9,7 +9,7 @@ const BuyContent = () => {
   
   const { symbol } = useParams();
   const {data , isPending, error} = useAuthFetch("/api/stocks/"+symbol)
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="stock-content">

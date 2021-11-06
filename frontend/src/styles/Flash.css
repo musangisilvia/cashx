@@ -1,0 +1,35 @@
+.flash-notification{
+	display: none;
+	width: 300px;
+	height: 40px;
+	position: absolute;
+	top:  150px;
+	right: 40%;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: white;
+}
+
+.flash-notification-show{
+	display: block;
+}
+
+.flash-notification-hide{
+	display: none;
+}
+
+.flash-notification-success{
+	background-color: green;
+}
+
+.flash-notification-error{
+	background-color: red;
+}
+
+.flash-notification i{
+	color: white;
+	font-size: large;
+	cursor: pointer;
+}
