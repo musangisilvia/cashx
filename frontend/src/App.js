@@ -12,7 +12,7 @@ import StockPage from "./pages/StockPage";
 import SellPage from "./pages/SellPage";
 import BuyPage from "./pages/BuyPage";
 import PortfolioPage from "./pages/PortfolioPage";
-import History from "./pages/HistoryPage";
+import HistoryPage from "./pages/HistoryPage";
 import Research from "./pages/ResearchPage";
 import Wallet from "./pages/Wallet";
 import Settings from "./pages/Settings";
@@ -43,7 +43,7 @@ function App() {
         <PrivateRoute exact path="/stocks/:symbol/sell" component={SellPage} />
         <PrivateRoute exact path="/stocks/:symbol/buy" component={BuyPage} />
         <PrivateRoute exact path="/portfolio" component={PortfolioPage} />
-        <PrivateRoute exact path="/history" component={History} />
+        <PrivateRoute exact path="/history" component={HistoryPage} />
         <PrivateRoute exact path="/research" component={Research} />
         <PrivateRoute exact path="/wallet" component={Wallet} />
         <PrivateRoute exact path="/settings" component={Settings} />

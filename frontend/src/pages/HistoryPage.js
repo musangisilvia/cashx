@@ -1,8 +1,7 @@
 import HistoryContent from "../components/HistoryContent";
 
-import "../styles/Dashboard.css";
 
-function History() {
+function HistoryPage() {
   return (
     <div>
       <HistoryContent />
@@ -10,4 +9,4 @@ function History() {
   )
 }
 
-export default History;
+export default HistoryPage;
