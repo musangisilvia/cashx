@@ -8,7 +8,7 @@ const Flash = ({setFlash, type, msg}) => {
   }
 
   return (
-    <div className={"flash-notification " + "flash-notification-"+type}>
+    <div className={"flash-notification flash-notification-"+type}>
         <p>{msg}</p>
       <i class="uil uil-multiply" onClick={handleClick}></i>
     </div>

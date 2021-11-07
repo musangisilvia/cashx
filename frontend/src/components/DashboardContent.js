@@ -1,5 +1,4 @@
 import DashBoardNewsList from "./DashboardNewsList";
-import DashboardTable from "./DashboardTable";
 import PortfolioTable from "./PortfolioTable";
 import useAuthFetch from "../helpers/useAuthFetch";
 import "../styles/DashboardContent.css";

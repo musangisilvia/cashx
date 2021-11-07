@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory  } from "react-router-dom";
-import { useAuth, login } from '../helpers/auth';
+import { login } from '../helpers/auth';
 
 
 import "../styles/Content.css";
@@ -23,9 +23,9 @@ function Content() {
 
   console.log(credentials);
 
-  setIsPending(true)
+  // setIsPending(true)
 
-    {/* Make the post request for signing in */}
+    // Make the post request for signing in
     fetch('/api/login', {
       method: 'post',
       body: JSON.stringify(credentials)

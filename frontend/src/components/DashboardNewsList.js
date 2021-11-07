@@ -1,4 +1,4 @@
-import useFetch from "../helpers/useFetch";
+import useAuthFetch from "../helpers/useAuthFetch";
 
 import "../styles/DashboardNewsList.css";
 
@@ -6,7 +6,7 @@ import DashboardNewsItem from "./DashboardNewsItem";
 
 const DashBoardNewsList = () => {
 
-  const {data: blogs, isPending, error} = useFetch('/api/news')
+  const {data: blogs, isPending, error} = useAuthFetch('/api/news')
 
   return (
     <div className="dashboard-news-list">

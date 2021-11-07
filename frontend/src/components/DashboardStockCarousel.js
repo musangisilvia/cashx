@@ -4,11 +4,11 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import "@splidejs/splide/dist/css/splide.min.css";
 
-import useFetch from "../helpers/useFetch";
+import useAuthFetch from "../helpers/useAuthFetch";
 
 function DashboardStockCarousel() {
 
-  const {data: stocks, isPending, error} = useFetch('/api/carousel')
+  const {data: stocks, isPending, error} = useAuthFetch('/api/carousel')
 
 
   return (

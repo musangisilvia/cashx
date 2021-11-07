@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { ReactComponent as Logo } from '../images/Logo.svg'
 import '../styles/ErrorHeader.css'
 
