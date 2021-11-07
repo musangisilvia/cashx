@@ -1,12 +1,13 @@
-.stock-content-header .balance{
+.balance{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: #1b2131;
   color: white;
-  padding: 5px 10px;
+  padding: 5px 20px;
   border-radius: 10px;
+  font-weight: 800;
 }
 
 .balance .title{

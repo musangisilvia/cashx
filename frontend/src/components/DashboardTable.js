@@ -5,7 +5,7 @@ import TableHeader from "./TableHeader";
 const DashboardTable = () => {
   return (
 <div class="container">
-  <h2>Your Top Perfoming Stocks</h2>
+  <h2>Your Stocks</h2>
   <ul class="responsive-table">
     <TableHeader />
     <TableRow />

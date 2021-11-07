@@ -238,3 +238,39 @@ def sell_stock(symbol):
 
 
     return {"status": "ok"}, 201
+
+
+@bp.route('/portfolio', defaults={'top': None})
+@bp.route('/portfolio/<top>')
+@auth_required
+def portfolio(top=7):
+    '''
+    Returns a list of all the stock owned by the requesting user
+    '''
+    data = []
+    stock = {}
+    user = current_user()
+    if top:
+        shares = Shares.query.filter_by(user_id=user.id).limit(top).all()
+    else:
+        shares = Shares.query.filter_by(user_id=user.id).all()
+
+    for share in shares:
+        # Find the current price for each share
+        stock_quote = finnhub_client.quote(share.symbol)
+
+        # print(share.symbol)
+        stock["symbol"] = share.symbol
+        stock["company_name"] = share.name
+        stock["shares"] = share.shares
+        stock["current_price"] = stock_quote.get("c")
+        stock["change"] = stock_quote.get('d')
+        stock["percent_change"] = stock_quote.get('dp')
+
+ 
+        data.append(stock)
+        # Empty the dict after adding it to the list
+        stock={}
+
+
+    return json.dumps(data), 200
