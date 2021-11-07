@@ -14,10 +14,16 @@ const StockContentSubHeader = ({ data }) => {
           {data.stock.description}
         </p>
         <div className="stock-content-buttons">
-          
-          <div className="sell" onClick={() => history.push(sell_url)}>
-            <p>Sell</p>
-          </div>
+          {data.user_data.shares_owned > 0
+            ?
+            <div className="sell" onClick={() => history.push(sell_url)}>
+              <p>Sell</p>
+            </div>
+            :
+            <div className="sell" style={{ visibility: 'hidden'}} onClick={() => history.push(sell_url)}>
+              <p>Sell</p>
+            </div>
+          }
           <div className="buy" onClick={() => history.push(buy_url)}>
             <p>Buy</p>
           </div>

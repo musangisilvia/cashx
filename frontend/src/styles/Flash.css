@@ -33,3 +33,7 @@
 	font-size: large;
 	cursor: pointer;
 }
+
+.flash-notification p{
+	font-weight: 800;
+}

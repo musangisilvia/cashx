@@ -1,7 +1,7 @@
 import {useParams} from "react-router";
 import "../styles/StockContent.css"
 import StockContentHeader from "./StockContentHeader";
-import StockContentInfo from "./StockContentInfo";
+import SellContentInfo from "./SellContentInfo";
 
 import useAuthFetch from "../helpers/useAuthFetch";
 
@@ -18,7 +18,7 @@ const SellContent = () => {
       { data &&
         <>
           <StockContentHeader data={data} />
-          <StockContentInfo data={data}/>
+          <SellContentInfo data={data}/>
         </>
       }
     </div>
