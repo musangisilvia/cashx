@@ -36,7 +36,6 @@ def carousel():
     IEX_API_KEY = os.environ.get("IEX_API_KEY")
     #url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
     url = f"{iex_live_base}/stock/market/list/mostactive?token={IEX_API_KEY}"
-    print(url)
     r = requests.get(url)
     data = r.json()
     if not data:
@@ -48,9 +47,12 @@ def carousel():
 @auth_required
 def stocks():
     IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
-    active_url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
-    gainers_url = f"{iex_sandbox_base}/stock/market/list/gainers?token={IEX_SANDBOX_KEY}"
-    losers_url = f"{iex_sandbox_base}/stock/market/list/losers?token={IEX_SANDBOX_KEY}"
+    # active_url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
+    active_url = f"{iex_live_base}/stock/market/list/mostactive?token={IEX_API_KEY}"
+    # gainers_url = f"{iex_sandbox_base}/stock/market/list/gainers?token={IEX_SANDBOX_KEY}"
+    gainers_url = f"{iex_live_base}/stock/market/list/gainers?token={IEX_API_KEY}"
+    # losers_url = f"{iex_sandbox_base}/stock/market/list/losers?token={IEX_SANDBOX_KEY}"
+    losers_url = f"{iex_live_base}/stock/market/list/losers?token={IEX_API_KEY}"
 
     r_active = requests.get(active_url)
     r_gainers = requests.get(gainers_url)
