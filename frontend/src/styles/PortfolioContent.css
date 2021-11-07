@@ -1,0 +1,21 @@
+.portfolio-content{
+	margin-left: 4vw;
+
+}
+
+.portfolio-header {
+	display: flex;
+	justify-content: right;
+	margin-top: 30px;
+	margin-right: 100px;
+}
+
+.sell-all{
+	margin: 0 100px;
+	border-radius: 5px;
+	background-color: red;
+	padding: 0 20px;
+	color: white;
+	cursor: pointer;
+	font-weight: 800;
+}

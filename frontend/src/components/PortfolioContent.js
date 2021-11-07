@@ -1,13 +1,28 @@
-import DashBoardNewsList from "./DashboardNewsList";
-import DashboardTable from "./DashboardTable";
-import "../styles/DashboardContent.css";
+import useAuthFetch from "../helpers/useAuthFetch";
+import Balance from "./Balance";
+import PortfolioTable from "./PortfolioTable";
 
-function AnalysisContent() {
+import "../styles/PortfolioContent.css"
+
+function PortfolioContent() {
+
+  const {data, isPending, error} = useAuthFetch('http://localhost:5000/api/portfolio');
+  // console.log(data);
+
+  const handleSellAll = () => {
+    console.log("Sell All")
+  }
+
+
   return (
-    <div className="dashboard-content">
-      Hello Portfolio content
+    <div className="portfolio-content">
+      <h2>Portfolio</h2>
+
+      {isPending && <div style={{ textAlign: "center" }}>Loading...</div>}
+      {error && <div style={{textAlign: "center" }}> {error} </div>}
+      {data && <PortfolioTable data={data}/>}
     </div>
   );
 }
 
-export default AnalysisContent;
+export default PortfolioContent;
