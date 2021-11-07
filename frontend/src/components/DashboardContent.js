@@ -6,7 +6,7 @@ import "../styles/DashboardContent.css";
 function DashboardContent() {
 
 
-  const {data, isPending, error} = useAuthFetch('http://localhost:5000/api/portfolio/7');
+  const {data, isPending, error} = useAuthFetch('https://cashx.tech/api/portfolio/7');
 
   return (
     <div className="dashboard-content">

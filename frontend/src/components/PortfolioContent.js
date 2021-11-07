@@ -6,7 +6,7 @@ import "../styles/PortfolioContent.css"
 
 function PortfolioContent() {
 
-  const {data, isPending, error} = useAuthFetch('http://localhost:5000/api/portfolio');
+  const {data, isPending, error} = useAuthFetch('https://cashx.tech/api/portfolio');
   // console.log(data);
 
 
