@@ -274,3 +274,26 @@ def portfolio(top=7):
 
 
     return json.dumps(data), 200
+
+
+@bp.route('/history')
+@auth_required
+def history():
+    '''
+    Returns a history of the transactions
+    '''
+    data = []
+    trans = {}
+    user = current_user()
+    transactions = Transaction.query.filter_by(user_id = user.id).all()
+    for transaction in transactions:
+        trans["symbol"] = transaction.symbol
+        trans["company_name"] = transaction.name
+        trans["amount"] = transaction.amount
+        trans["type"] = transaction.type
+        trans["date"] = transaction.date.isoformat()
+
+        data.append(trans)
+        trans = {}
+
+    return json.dumps(data), 200
