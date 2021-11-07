@@ -7,6 +7,13 @@ const PortfolioTable = ({data}) => {
       <ul className="responsive-table">
         <PortfolioTableHeader />
 
+        {
+          data.length === 0 && 
+          <>
+          <p style={{textAlign:'center'}}>Your dont own any stock yet</p>
+          <p style={{textAlign:'center'}}>Visit the Markets to start buying some stock</p>
+          </>
+        }
         {data.map((stock) => <PortfolioTableRow stock={stock} />)}
 
       </ul>
