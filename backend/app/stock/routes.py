@@ -20,7 +20,7 @@ iex_live_base = "https://cloud.iexapis.com/stable"
 
 
 @bp.route('/news')
-# @auth_required
+@auth_required
 def news():
     data = finnhub_client.general_news('general', min_id=0)
     data = data[:3]
@@ -30,7 +30,7 @@ def news():
 
 
 @bp.route('/carousel', methods=["GET"])
-# @auth_required
+@auth_required
 def carousel():
     IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
     IEX_API_KEY = os.environ.get("IEX_API_KEY")
@@ -45,7 +45,7 @@ def carousel():
 
 
 @bp.route('/stocks', methods=["GET"])
-# @auth_required
+@auth_required
 def stocks():
     IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
     active_url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
@@ -62,7 +62,7 @@ def stocks():
 
 
 @bp.route('/search_stock/<stock_name>', methods=["GET"])
-# @auth_required
+@auth_required
 def search(stock_name):
     results = finnhub_client.symbol_lookup(stock_name).get('result')[0]
     return json.dumps(results), 200
