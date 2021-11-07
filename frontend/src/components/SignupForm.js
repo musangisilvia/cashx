@@ -24,7 +24,7 @@ function SignupForm() {
         };
         setIsPending(true)
         setTimeout(() => {
-          fetch('https://cashx.tech/api/signup', {
+          fetch('http://localhost:5000/api/signup', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
