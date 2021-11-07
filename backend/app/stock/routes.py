@@ -118,6 +118,11 @@ def buy_stock(symbol):
     shares_to_buy = float(req.get('shares_to_buy', None))
     stock_name = req.get('company_name', None)
 
+    # Check if the shares are positive
+    if shares_to_buy < 1:
+        # Return appropriate error message
+        return {"error": "Invalid Number of shares to buy"}, 400
+
 
     # Calculate total amount to be spent
     total_amount = shares_to_buy * stock_price
@@ -166,3 +171,70 @@ def buy_stock(symbol):
 
     return {"status": "ok"}, 201
 
+
+@bp.route('/stocks/<symbol>/sell', methods=["POST"])
+@auth_required
+def sell_stock(symbol):
+    '''
+    Buys stock for a certain company
+    '''
+    symbol = symbol.upper()
+
+    # Get the data from the json payload
+    req = request.get_json(force=True)
+    stock_price = float(req.get('current_price', None))
+    shares_to_sell = float(req.get('shares_to_sell', None))
+    stock_name = req.get('company_name', None)
+
+    # Check if the shares are positive
+    if shares_to_sell < 1:
+        # Return appropriate error message
+        return {"error": "Invalid Number of shares to sell"}, 400
+
+    # Check if user owns those shares
+    user = current_user()
+    shares = Shares.lookup(symbol, user.id)
+    if not shares:
+        return {"error": f"You don't own {symbol} shares"}, 400
+    else:
+        # If user owns shares check if they have the number they want to sell
+        if shares_to_sell > shares.shares:
+            return {"error": "You don't have that many shares to sell"}, 400
+
+
+    # At this point the user owns the said shares and can sell them
+
+    # Calculate total amount to be made
+    total_amount = shares_to_sell * stock_price
+
+
+    # First get the new balance
+    new_balance = user.balance + total_amount
+    user.balance = new_balance
+    db.session.add(user)
+
+    # Get new number of owned shares
+    new_shares = shares.shares - shares_to_sell
+
+    # If the new number is 0 completely delete the record
+    if new_shares == 0:
+        db.session.delete(shares)
+    else:
+        shares.shares = new_shares
+        db.session.add(shares)
+
+    # Add the transaction to the db
+    trans = Transaction(symbol=symbol,
+                        name=stock_name,
+                        amount=total_amount,
+                        date=datetime.now(),
+                        type="sell",
+                        user_id=user.id)
+
+    db.session.add(trans)
+
+    # Commit all these changes to the db
+    db.session.commit()
+
+
+    return {"status": "ok"}, 201
