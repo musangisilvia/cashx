@@ -6,6 +6,9 @@ import os
 import json
 import finnhub
 import requests
+from flask import request
+from app.models import User, Shares, Transaction
+from datetime import datetime
 
 
 #finnhub_client = finnhub.Client(api_key=os.environ.get('FINNHUB_SANDBOX_KEY'))
@@ -82,7 +85,15 @@ def stock(stock_name):
 
     user = current_user()
     user_data["balance"] = user.balance
-    user_data["shares_owned"] = 12341
+
+    shares = Shares.lookup(stock_name, user.id)
+    if shares:
+        user_data["shares_owned"] = shares.shares
+        user_data["total_invested"] = shares.buying_value
+    else:
+        user_data["shares_owned"] = 0
+        user_data["total_invested"] = 0
+
 
     stock = r.json()
 
@@ -91,3 +102,139 @@ def stock(stock_name):
     data["quotes"] = stock_quotes
 
     return json.dumps(data), 200
+
+
+@bp.route('/stocks/<symbol>/buy', methods=["POST"])
+@auth_required
+def buy_stock(symbol):
+    '''
+    Buys stock for a certain company
+    '''
+    symbol = symbol.upper()
+
+    # Get the data from the json payload
+    req = request.get_json(force=True)
+    stock_price = float(req.get('current_price', None))
+    shares_to_buy = float(req.get('shares_to_buy', None))
+    stock_name = req.get('company_name', None)
+
+    # Check if the shares are positive
+    if shares_to_buy < 1:
+        # Return appropriate error message
+        return {"error": "Invalid Number of shares to buy"}, 400
+
+
+    # Calculate total amount to be spent
+    total_amount = shares_to_buy * stock_price
+
+    # Check if user can afford to buy
+    user = current_user()
+    if total_amount > user.balance:
+        # Return appropriate error message
+        return {"error": "Not Enough Balance in account"}, 400
+
+    # If there is enough money in the account
+    # First get the new balance
+    new_balance = user.balance - total_amount
+    user.balance = new_balance
+    db.session.add(user)
+
+    # Add the shares to the database
+    # Check if they already own those shares
+    shares = Shares.lookup(symbol, user.id)
+    if not shares:
+        # If no shares are owned create new instance
+        shares = Shares(symbol=symbol,
+                        name=stock_name,
+                        shares=shares_to_buy,
+                        buying_value=total_amount,
+                        user_id=user.id)
+    else:
+        # If shares are already ownded just update
+        shares.shares = shares.shares + shares_to_buy
+        shares.buying_value=shares.buying_value + total_amount
+
+    db.session.add(shares)
+
+    # Add the transaction to the db
+    trans = Transaction(symbol=symbol,
+                        name=stock_name,
+                        amount=total_amount,
+                        date=datetime.now(),
+                        type="buy",
+                        user_id=user.id)
+
+    db.session.add(trans)
+
+    db.session.commit()
+
+
+    return {"status": "ok"}, 201
+
+
+@bp.route('/stocks/<symbol>/sell', methods=["POST"])
+@auth_required
+def sell_stock(symbol):
+    '''
+    Buys stock for a certain company
+    '''
+    symbol = symbol.upper()
+
+    # Get the data from the json payload
+    req = request.get_json(force=True)
+    stock_price = float(req.get('current_price', None))
+    shares_to_sell = float(req.get('shares_to_sell', None))
+    stock_name = req.get('company_name', None)
+
+    # Check if the shares are positive
+    if shares_to_sell < 1:
+        # Return appropriate error message
+        return {"error": "Invalid Number of shares to sell"}, 400
+
+    # Check if user owns those shares
+    user = current_user()
+    shares = Shares.lookup(symbol, user.id)
+    if not shares:
+        return {"error": f"You don't own {symbol} shares"}, 400
+    else:
+        # If user owns shares check if they have the number they want to sell
+        if shares_to_sell > shares.shares:
+            return {"error": "You don't have that many shares to sell"}, 400
+
+
+    # At this point the user owns the said shares and can sell them
+
+    # Calculate total amount to be made
+    total_amount = shares_to_sell * stock_price
+
+
+    # First get the new balance
+    new_balance = user.balance + total_amount
+    user.balance = new_balance
+    db.session.add(user)
+
+    # Get new number of owned shares
+    new_shares = shares.shares - shares_to_sell
+
+    # If the new number is 0 completely delete the record
+    if new_shares == 0:
+        db.session.delete(shares)
+    else:
+        shares.shares = new_shares
+        db.session.add(shares)
+
+    # Add the transaction to the db
+    trans = Transaction(symbol=symbol,
+                        name=stock_name,
+                        amount=total_amount,
+                        date=datetime.now(),
+                        type="sell",
+                        user_id=user.id)
+
+    db.session.add(trans)
+
+    # Commit all these changes to the db
+    db.session.commit()
+
+
+    return {"status": "ok"}, 201

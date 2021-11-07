@@ -9,6 +9,8 @@ import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
 import MarketsPage from "./pages/MarketsPage";
 import StockPage from "./pages/StockPage";
+import SellPage from "./pages/SellPage";
+import BuyPage from "./pages/BuyPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import History from "./pages/HistoryPage";
 import Research from "./pages/ResearchPage";
@@ -38,6 +40,8 @@ function App() {
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/markets" component={MarketsPage} />
         <PrivateRoute exact path="/stocks/:symbol" component={StockPage} />
+        <PrivateRoute exact path="/stocks/:symbol/sell" component={SellPage} />
+        <PrivateRoute exact path="/stocks/:symbol/buy" component={BuyPage} />
         <PrivateRoute exact path="/portfolio" component={PortfolioPage} />
         <PrivateRoute exact path="/history" component={History} />
         <PrivateRoute exact path="/research" component={Research} />

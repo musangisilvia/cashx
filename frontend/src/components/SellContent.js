@@ -1,15 +1,14 @@
 import {useParams} from "react-router";
 import "../styles/StockContent.css"
 import StockContentHeader from "./StockContentHeader";
-import StockContentSubHeader from "./StockContentSubHeader";
-import StockContentInfo from "./StockContentInfo";
+import SellContentInfo from "./SellContentInfo";
 
 import useAuthFetch from "../helpers/useAuthFetch";
 
-const StockContent = () => {
+const SellContent = () => {
   
   const { symbol } = useParams();
-  const {data , isPending, error} = useAuthFetch("http://localhost:5000/api/stocks/"+symbol)
+  const {data , isPending, error} = useAuthFetch("/api/stocks/"+symbol)
   console.log(data);
 
   return (
@@ -19,12 +18,11 @@ const StockContent = () => {
       { data &&
         <>
           <StockContentHeader data={data} />
-          <StockContentSubHeader data={data}/>
-          <StockContentInfo data={data}/>
+          <SellContentInfo data={data}/>
         </>
       }
     </div>
   )
 }
 
-export default StockContent;
+export default SellContent;

@@ -12,6 +12,8 @@ class User(db.Model):
     roles = db.Column(db.Text)
     is_active = db.Column(db.Boolean, default=True, server_default='true')
     balance = db.Column(db.Float, default=100000.0)
+    shares = db.relationship('Shares', backref='user', lazy=True)
+    transactions = db.relationship('Transaction', backref='user', lazy=True)
 
     
     @property
@@ -62,3 +64,38 @@ class User(db.Model):
 
     def is_valid(self):
         return self.is_active
+
+
+class Shares(db.Model):
+    '''
+    Represents the shares of different stock owned by users
+    '''
+    id = db.Column(db.Integer, primary_key=True)
+    symbol = db.Column(db.Text)
+    name = db.Column(db.Text)
+    shares = db.Column(db.Float, default=0.0)
+    buying_value = db.Column(db.Float, default=0.0)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
+    @classmethod
+    def lookup(cls, symbol, user_id):
+        '''
+        Required class method that takes a single username and returns a user
+        instance if there is one that matches or None if there is not.
+        '''
+        return cls.query.filter_by(symbol=symbol, user_id=user_id).one_or_none()
+
+
+
+class Transaction(db.Model):
+    '''
+    Represents all the transactions
+    '''
+    id = db.Column(db.Integer, primary_key=True)
+    symbol = db.Column(db.Text)
+    name = db.Column(db.Text)
+    amount = db.Column(db.Float)
+    date = db.Column(db.DateTime)
+    type = db.Column(db.String(20))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

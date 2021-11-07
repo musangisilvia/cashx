@@ -1,4 +1,4 @@
-
+import Balance from "./Balance";
 import "../styles/StockContentHeader.css";
 
 const StockContentHeader = ({data}) => {
@@ -10,6 +10,7 @@ const StockContentHeader = ({data}) => {
         <div>
           <img src={data.stock.logo} alt="stock-logo" />
         </div>
+        <Balance balance={data.user_data.balance} />
     </div>
 
   );

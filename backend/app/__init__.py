@@ -17,6 +17,9 @@ def create_app(config_class = Config):
     # Imports
     # from app import models
     from app.models import User
+    # from app.models import Shares
+    # from app.models import Transaction
+
 
     # Init the app
     app = Flask(__name__)

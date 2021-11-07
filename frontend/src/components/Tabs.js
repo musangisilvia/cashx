@@ -22,7 +22,7 @@ const Tabs = () => {
     setActiveTab("tab3");
   }
   
-  const {data, isPending, error} = useFetch('https://cashx.tech/api/stocks');
+  const {data, isPending, error} = useFetch('http://localhost:5000/api/stocks');
   
 
   return (

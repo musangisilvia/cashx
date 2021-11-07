@@ -1,0 +1,97 @@
+.buy-card {
+	width: 500px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.buy-card .title{
+  background-color: #1b2131;
+  color: white;
+  padding: 10px;
+  margin:0;
+  font-weight: bold;
+}
+
+.buy-card-row {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 10px;
+	font-weight: bold;
+}
+
+.buy-card-row:nth-child(even) {
+  background-color: #66fcf1;
+}
+
+
+.buy-btn {
+	background-color: green;
+	width: 100px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.buy-btn p{
+	text-align: center;
+	text-transform: uppercase;
+	color: white;
+}
+
+.buy-input {
+	display: flex;
+	width: 50%;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.buy-input input{
+	width: 50px;
+	height: 30px;
+	outline: none;
+	padding: 0 10px;
+	
+}
+
+/* Chrome, Safari, Edge, Opera */
+.buy-input input::-webkit-outer-spin-button,
+.buy-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.buy-input input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+
+
+.buy-plus,
+.buy-minus {
+	width: 30px;
+	height: 30px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+
+.buy-plus i,
+.buy-minus i {
+	font-size: 20px;
+}
+
+.buy-plus{
+	background-color: green;
+}
+
+.buy-minus{
+	background-color: red;
+}
