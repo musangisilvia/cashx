@@ -39,7 +39,7 @@ const Sell = ({ data }) => {
       setMsg("You don't own that number of shares");
     }
 
-    if (sharesToSell > 0 && sharesToSell < data.user_data.shares_owned){
+    if (sharesToSell > 0 && sharesToSell <= data.user_data.shares_owned){
 
       const payload = {
         'current_price': data.quotes.c,

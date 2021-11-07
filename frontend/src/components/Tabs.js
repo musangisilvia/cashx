@@ -3,7 +3,7 @@ import ActiveTab from "./ActiveTab";
 import GainersTab from "./GainersTab";
 import LosersTab from "./LosersTab";
 
-import useFetch from "../helpers/useFetch";
+import useAuthFetch from "../helpers/useAuthFetch";
 import "../styles/Tabs.css";
 
 const Tabs = () => {
@@ -22,7 +22,7 @@ const Tabs = () => {
     setActiveTab("tab3");
   }
   
-  const {data, isPending, error} = useFetch('http://localhost:5000/api/stocks');
+  const {data, isPending, error} = useAuthFetch('http://localhost:5000/api/stocks');
   
 
   return (

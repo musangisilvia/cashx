@@ -20,7 +20,7 @@ iex_live_base = "https://cloud.iexapis.com/stable"
 
 
 @bp.route('/news')
-# @auth_required
+@auth_required
 def news():
     data = finnhub_client.general_news('general', min_id=0)
     data = data[:3]
@@ -30,7 +30,7 @@ def news():
 
 
 @bp.route('/carousel', methods=["GET"])
-# @auth_required
+@auth_required
 def carousel():
     IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
     IEX_API_KEY = os.environ.get("IEX_API_KEY")
@@ -45,7 +45,7 @@ def carousel():
 
 
 @bp.route('/stocks', methods=["GET"])
-# @auth_required
+@auth_required
 def stocks():
     IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
     active_url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
@@ -62,7 +62,7 @@ def stocks():
 
 
 @bp.route('/search_stock/<stock_name>', methods=["GET"])
-# @auth_required
+@auth_required
 def search(stock_name):
     results = finnhub_client.symbol_lookup(stock_name).get('result')[0]
     return json.dumps(results), 200
@@ -238,3 +238,62 @@ def sell_stock(symbol):
 
 
     return {"status": "ok"}, 201
+
+
+@bp.route('/portfolio', defaults={'top': None})
+@bp.route('/portfolio/<top>')
+@auth_required
+def portfolio(top=7):
+    '''
+    Returns a list of all the stock owned by the requesting user
+    '''
+    data = []
+    stock = {}
+    user = current_user()
+    if top:
+        shares = Shares.query.filter_by(user_id=user.id).limit(top).all()
+    else:
+        shares = Shares.query.filter_by(user_id=user.id).all()
+
+    for share in shares:
+        # Find the current price for each share
+        stock_quote = finnhub_client.quote(share.symbol)
+
+        # print(share.symbol)
+        stock["symbol"] = share.symbol
+        stock["company_name"] = share.name
+        stock["shares"] = share.shares
+        stock["current_price"] = stock_quote.get("c")
+        stock["change"] = stock_quote.get('d')
+        stock["percent_change"] = stock_quote.get('dp')
+
+ 
+        data.append(stock)
+        # Empty the dict after adding it to the list
+        stock={}
+
+
+    return json.dumps(data), 200
+
+
+@bp.route('/history')
+@auth_required
+def history():
+    '''
+    Returns a history of the transactions
+    '''
+    data = []
+    trans = {}
+    user = current_user()
+    transactions = Transaction.query.filter_by(user_id = user.id).all()
+    for transaction in transactions:
+        trans["symbol"] = transaction.symbol
+        trans["company_name"] = transaction.name
+        trans["amount"] = transaction.amount
+        trans["type"] = transaction.type
+        trans["date"] = transaction.date.isoformat()
+
+        data.append(trans)
+        trans = {}
+
+    return json.dumps(data), 200

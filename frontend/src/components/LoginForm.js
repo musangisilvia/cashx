@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/LoginForm.css';
 import { useHistory } from 'react-router-dom';
 
-import { useAuth, login } from '../helpers/auth';
+import { login } from '../helpers/auth';
 
 function LoginForm() {
 
@@ -11,7 +11,6 @@ function LoginForm() {
   const [errorDiv, setErrorDiv] = useState('error-div-none');
   const [isPending, setIsPending] = useState(false)
 
-  const [logged] = useAuth();
   const history = useHistory();
 
   const handleUsernameChange = (e) => {
@@ -31,7 +30,7 @@ function LoginForm() {
 
     setIsPending(true)
 
-    {/* Make the post request for signing in */}
+    // Make the post request for signing in 
     fetch('http://localhost:5000/api/login', {
       method: 'post',
       body: JSON.stringify(credentials)
