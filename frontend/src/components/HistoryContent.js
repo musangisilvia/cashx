@@ -6,7 +6,7 @@ import "../styles/HistoryContent.css";
 
 function HistoryContent() {
 
-  const {data, isPending, error} = useAuthFetch('https://cashx.tech/api/history');
+  const {data, isPending, error} = useAuthFetch('http://127.0.0.1/api/places');
 
   return (
     <div className="history-content">

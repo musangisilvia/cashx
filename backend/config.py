@@ -13,3 +13,4 @@ class Config(object):
     SECRET_KEY = 'super top secret key'
     JWT_ACCESS_LIFESPAN = {'hours': 24}
     JWT_REFRESH_LIFESPAN = {'days': 30}
+    CORS_HEADERS = 'Content-Type'

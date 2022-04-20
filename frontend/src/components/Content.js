@@ -21,7 +21,6 @@ function Content() {
       'password': 'demo-password'
     };
 
-  console.log(credentials);
 
   // setIsPending(true)
 
