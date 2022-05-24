@@ -49,7 +49,7 @@ const Sell = ({ data }) => {
 
       const symbol = data.stock.symbol 
 
-      authFetch('http://localhost:5000/api/stocks/' + symbol + '/sell', {
+      authFetch('api/stocks/' + symbol + '/sell', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',

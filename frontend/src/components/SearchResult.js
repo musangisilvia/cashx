@@ -2,7 +2,7 @@ import useAuthFetch from "../helpers/useAuthFetch";
 import {Link} from "react-router-dom";
 
 const SearchResult = ({searchTerm}) => {
-  const endpoint_url = "http://localhost:5000/api/search_stock/"+searchTerm;
+  const endpoint_url = "api/search_stock/"+searchTerm;
   const {data, isPending, error} = useAuthFetch(endpoint_url);
 
 

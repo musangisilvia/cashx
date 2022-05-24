@@ -31,7 +31,7 @@ function LoginForm() {
     setIsPending(true)
 
     // Make the post request for signing in 
-    fetch('https://cashx.tech/api/login', {
+    fetch('api/login', {
       method: 'post',
       body: JSON.stringify(credentials)
     }).then(r => r.json())
