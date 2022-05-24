@@ -30,7 +30,6 @@ function SignupForm() {
         .then((r) => r.json())
         .then((token) => {
           if (token.access_token) {
-            console.log(token);
             login(token);
             setErrorDiv("error-div-none");
             setIsPending(false);
