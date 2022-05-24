@@ -8,7 +8,7 @@ import useAuthFetch from "../helpers/useAuthFetch";
 
 const StockContent = () => {
   const { symbol } = useParams();
-  const { data, isPending, error } = useAuthFetch("api/stocks/" + symbol);
+  const { data, isPending, error } = useAuthFetch("/api/stocks/" + symbol);
 
   return (
     <div className="stock-content">
