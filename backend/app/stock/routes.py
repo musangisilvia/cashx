@@ -46,7 +46,9 @@ def carousel():
 @bp.route('/stocks', methods=["GET"])
 @auth_required
 def stocks():
-    IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
+    IEX_API_KEY = os.environ.get("IEX_API_KEY")
+    # IEX_SANDBOX_KEY = os.environ.get("IEX_SANDBOX_KEY")
+
     # active_url = f"{iex_sandbox_base}/stock/market/list/mostactive?token={IEX_SANDBOX_KEY}"
     active_url = f"{iex_live_base}/stock/market/list/mostactive?token={IEX_API_KEY}"
     # gainers_url = f"{iex_sandbox_base}/stock/market/list/gainers?token={IEX_SANDBOX_KEY}"
