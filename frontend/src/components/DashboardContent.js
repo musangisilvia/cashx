@@ -4,15 +4,13 @@ import useAuthFetch from "../helpers/useAuthFetch";
 import "../styles/DashboardContent.css";
 
 function DashboardContent() {
-
-
-  const {data, isPending, error} = useAuthFetch('https://cashx.tech/api/portfolio/7');
+  const { data, isPending, error } = useAuthFetch("api/portfolio/7");
 
   return (
     <div className="dashboard-content">
       {isPending && <div style={{ textAlign: "center" }}>Loading...</div>}
-      {error && <div style={{textAlign: "center" }}> {error} </div>}
-      {data && <PortfolioTable data={data}/>}
+      {error && <div style={{ textAlign: "center" }}> {error} </div>}
+      {data && <PortfolioTable data={data} />}
       <DashBoardNewsList />
     </div>
   );
