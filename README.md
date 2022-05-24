@@ -9,3 +9,5 @@ https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deploymen
 https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
 https://blog.miguelgrinberg.com/post/how-to-deploy-a-react--flask-project
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04
+
+https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually
